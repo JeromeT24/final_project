@@ -1,5 +1,6 @@
 ---
 title: "Gapminder: Prostate cancer"
+Author: "Jerome Lwali"
 format: dashboard
 theme: litera
 ---
