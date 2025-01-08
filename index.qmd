@@ -12,7 +12,7 @@ import plotly.express as px
 import country_converter as coco
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
-import time
+from itables import show
 ```
 
 ## Data
@@ -283,6 +283,7 @@ prostate_cancer = pd.merge(prostate_new_cases, prostate_deaths)
 prostate_cancer_2019 = prostate_cancer[
     ["country_code", "country", "new_cases", "number_of_deaths"]
 ]
-print(prostate_cancer_2019.to_string())
+show(prostate_cancer_2019)
+# print(prostate_cancer_2019.to_string())
 ```
 
