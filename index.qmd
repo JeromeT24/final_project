@@ -3,7 +3,7 @@ title: "Prostate cancer"
 format: dashboard
 theme: litera
 ---
-# Page 1
+# New Prostate Cancer cases 2019
 ## Packages
 
 ```{python}
@@ -170,7 +170,7 @@ fig.update_layout(
 ```
 
 
-# Page 2
+# New cases vs deaths 2019
 ## Row {height="50%"}
 ### Column {width="50%"}
 
@@ -274,7 +274,7 @@ print(
 )
 ```
 
-# Page 3
+# All countries Prostate Cancer data 2019
 ## Merging New cases and Deaths datasets
 
 
