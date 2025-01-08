@@ -157,7 +157,7 @@ fig = px.choropleth(
     color="new_cases",  # Column with data to be visualized
     hover_name="country",  # Column to display on hover
     color_continuous_scale="Reds",  # Color scale
-    title="World Map showing Prostate cancer New Cases in 2019",
+    title="World Map showing Prostate cancer Number of New Cases in 2019",
 )
 
 # Update layout for better appearance, center the title, and adjust size
