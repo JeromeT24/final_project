@@ -274,6 +274,56 @@ print(
     )
 )
 ```
+# New Prostate cancer from 1990 to 2019
+
+```{python}
+# Convert data to long format
+new_prostate_cancer_long = new_prostate_cancer.melt(
+    id_vars=["country"], var_name="year", value_name="new_cases"
+).sort_values(by=["country", "year"])
+
+# Convert country names to ISO3 country codes
+new_prostate_cancer_long["country_code"] = new_prostate_cancer_long["country"].apply(
+    coco.convert, to="ISO3"
+)
+
+# Update the country codes for specific countries
+update_dict = {"UAE": "UAE", "Serbia and Montenegro": "SCG"}
+
+new_prostate_cancer_long["country_code"] = new_prostate_cancer_long.apply(
+    lambda row: (
+        update_dict[row["country"]]
+        if row["country"] in update_dict
+        else row["country_code"]
+    ),
+    axis=1,
+)
+
+# Arrange columns
+new_prostate_cancer_long = new_prostate_cancer_long["country", "country_code", "year", "new_cases"]
+```
+```{python}
+# Create an animated choropleth map
+fig2 = px.choropleth(
+    new_prostate_cancer_long,
+    locations="country_code",  # Column with ISO country codes
+    color="new_cases",  # Column with data to be visualized
+    hover_name="country",  # Column to display on hover
+    color_continuous_scale="Reds",  # Color scale
+    title="World Map showing Prostate Cancer New Cases (1990-2019)",
+    animation_frame="year",  # Enables animation over time
+    projection="equirectangular",  # Map projection type
+)
+
+# Update layout for better appearance
+fig2.update_layout(
+    geo=dict(showframe=False, showcoastlines=True),
+    coloraxis_colorbar=dict(title="Number of Cases"),
+    title_x=0.5,  # Center the title
+    autosize=True,  # Enable autosizing for responsiveness
+)
+
+```
 
 # All countries Prostate Cancer data 2019
 ## Merging New cases and Deaths datasets
