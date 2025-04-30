@@ -274,6 +274,20 @@ print(
     )
 )
 ```
+
+# All countries Prostate Cancer data 2019
+## Merging New cases and Deaths datasets
+
+
+```{python}
+prostate_cancer = pd.merge(prostate_new_cases, prostate_deaths)
+prostate_cancer_2019 = prostate_cancer[
+    ["country_code", "country", "new_cases", "number_of_deaths"]
+]
+show(prostate_cancer_2019)
+# print(prostate_cancer_2019.to_string())
+```
+
 # New Prostate cancer from 1990 to 2019
 
 ```{python}
@@ -300,8 +314,9 @@ new_prostate_cancer_long["country_code"] = new_prostate_cancer_long.apply(
 )
 
 # Arrange columns
-new_prostate_cancer_long = new_prostate_cancer_long["country", "country_code", "year", "new_cases"]
+new_prostate_cancer_long = new_prostate_cancer_long[["country", "country_code", "year", "new_cases"]]
 ```
+
 ```{python}
 # Create an animated choropleth map
 fig2 = px.choropleth(
@@ -322,19 +337,4 @@ fig2.update_layout(
     title_x=0.5,  # Center the title
     autosize=True,  # Enable autosizing for responsiveness
 )
-
 ```
-
-# All countries Prostate Cancer data 2019
-## Merging New cases and Deaths datasets
-
-
-```{python}
-prostate_cancer = pd.merge(prostate_new_cases, prostate_deaths)
-prostate_cancer_2019 = prostate_cancer[
-    ["country_code", "country", "new_cases", "number_of_deaths"]
-]
-show(prostate_cancer_2019)
-# print(prostate_cancer_2019.to_string())
-```
-
